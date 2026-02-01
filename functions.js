@@ -1,6 +1,4 @@
-const rows = counters =>
-    counters
-      .map(counter => `
+const rows = counters => counters.map(counter => `
         <tr>
           <td>${counter.index}</td>
           <td>${counter.name}</td>
@@ -9,13 +7,17 @@ const rows = counters =>
         </tr>
       `)
       .join('')
+
+
       const search = (counters, query) =>
         counters.filter(counter =>
           counter.name.toLowerCase().includes(query.toLowerCase()) ||
           counter.bean.toLowerCase().includes(query.toLowerCase())
         )
+
         const total = counters =>
             counters.reduce((sum, counter) => sum + counter.count, 0)
+
         const order = (counters, property) =>
             [...counters].sort((a, b) => {
               if (typeof a[property] === 'string') {
@@ -23,6 +25,7 @@ const rows = counters =>
               }
               return a[property] - b[property]
             })
+            
             let sortState = {
                 column: null,
                 direction: 'asc' // 'asc' or 'desc'
